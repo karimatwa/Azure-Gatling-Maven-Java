@@ -1,0 +1,25 @@
+trigger: none
+
+pr:
+  branches:
+    include:
+    - master
+
+pool: AzurePipelinesAgentsPool
+
+steps:
+- task: Bash@3
+  displayName: Install JQ
+  inputs:
+    targetType: 'inline'
+    # Curl and JQ are required by the CI script
+    # In this example, we use Ubuntu agents which come with curl but not jq
+    script: 'apt-get update && apt-get -y install jq'
+- task: Bash@3
+  displayName: Start simulation
+  inputs:
+    filePath: 'start_simulation.sh'
+    arguments: >
+      $(gatlingEnterpriseUrl)
+      $(apiToken)
+      $(simulationId)      
