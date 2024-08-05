@@ -5,7 +5,7 @@ pr:
     include:
     - master
 
-pool: Azure Pipelines
+pool: AzurePipelinesAgentsPool
 
 steps:
 - task: Bash@3
