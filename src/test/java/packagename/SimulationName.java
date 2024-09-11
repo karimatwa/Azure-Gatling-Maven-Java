@@ -9,7 +9,6 @@ import io.gatling.javaapi.http.*;
 public class SimulationName extends Simulation {
 
   public static final int vu = Integer.getInteger("vu", 1);
-
   
   HttpProtocolBuilder httpProtocol =
       http.baseUrl("https://computer-database.gatling.io")
