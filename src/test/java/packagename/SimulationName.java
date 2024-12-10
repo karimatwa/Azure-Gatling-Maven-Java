@@ -17,6 +17,6 @@ public class SimulationName extends Simulation {
   ScenarioBuilder users = scenario("My Scenario").exec(http("Request 1").get("/computers"));
 
   {
-    setUp(users.injectOpen(atOnceUsers(vu))).protocols(httpProtocol);
+    setUp(users.injectOpen(rampUsersPerSec(10).to(3000).during(300))).protocols(httpProtocol);
   }
 }
